@@ -11,6 +11,7 @@ gem 'napa'
 gem 'roar', '~> 0.12.0'
 gem 'grape-swagger'
 gem 'faker'
+gem 'devise'
 
 group :development,:test do
   gem 'pry'
