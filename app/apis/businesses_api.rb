@@ -1,4 +1,5 @@
 class BusinessesApi < Grape::API
+
   desc 'Get a list of businesses'
   params do
     optional :ids, type: Array, desc: 'Array of business ids'
@@ -15,10 +16,11 @@ class BusinessesApi < Grape::API
     optional :address, type: String, desc: 'The address of the business'
   end
 
-  post do
-    business = Business.create!(permitted_params)
-    represent business, with: BusinessRepresenter
-  end
+    post do
+      business = Business.create!(permitted_params)
+      represent business, with: BusinessRepresenter
+    end
+
 
   params do
     requires :id, desc: 'ID of the business'

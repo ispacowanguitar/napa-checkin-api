@@ -3,8 +3,9 @@ class ApplicationApi < Grape::API
   extend Napa::GrapeExtenders
 
   mount HelloApi => '/'
-  mount BusinessesApi => '/Businesses'
-
+  mount BusinessesApi => '/businesses'
+  mount CheckinsApi => '/checkins'
+  
   add_swagger_documentation
 end
 
