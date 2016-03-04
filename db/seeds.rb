@@ -9,3 +9,12 @@
     )
 end
 
+10.times do
+  name = Faker::Internet.user_name
+  email = Faker::Internet.email
+  User.create(
+    name: name, 
+    email: email, 
+    )
+end
+

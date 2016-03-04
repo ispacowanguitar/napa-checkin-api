@@ -7,8 +7,4 @@ describe Business do
     expect(business).to_not be_nil
   end
 
-  it 'needs tests to be written!' do
-    pending('write tests for Business!')
-  end
-
 end
