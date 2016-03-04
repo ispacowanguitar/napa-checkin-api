@@ -1,6 +1,6 @@
 # simple-check-in
 
-:bow: Please put your auspicious [Travis status button](http://docs.travis-ci.com/user/status-images/) here :bow:
+Welcome to the Checkin API!
 
 1. [Overview](#overview)
 2. [How Does It Work](#how-does-it-work)
@@ -33,7 +33,7 @@ For a list of all Checkins in the database, go to '/checkins'. To retrieve a che
 You can create a checkin with a POST request. Just give it the parameters of the user_id, and the business_id. Both of these parameters must be present for the checkin to save properly. 
 
 ### Development
-After cloning the repository, bundle to make sure you have all needed gems installed
+After cloning the repository, bundle to make sure you have all needed gems installed by opening your terminal and running
 ```
 bundle install
 ```

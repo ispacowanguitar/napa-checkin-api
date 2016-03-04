@@ -7,4 +7,13 @@ describe Checkin do
     expect(checkin).to_not be_nil
   end
 
+  it 'cannot be created without a valid user_id' do
+    checkin = FactoryGirl.build(:checkin, user_id: nil)
+    expect(checkin).to_not be_valid
+  end
+
+  it 'cannot be created without a valid business_id' do
+    checkin = FactoryGirl.build(:checkin, business_id: nil)
+    expect(checkin).to_not be_valid
+  end
 end
