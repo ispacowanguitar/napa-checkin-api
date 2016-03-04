@@ -33,15 +33,19 @@ For a list of all Checkins in the database, go to '/checkins'. To retrieve a che
 You can create a checkin with a POST request. Just give it the parameters of the user_id, and the business_id. Both of these parameters must be present for the checkin to save properly. 
 
 ### Development
-
+After cloning the repository, bundle to make sure you have all needed gems installed
 ```
 bundle install
+```
 
+Next set up the database by running
+```
 rake db:reset
-
+```
+To make sure everything is running properly run the tests with
+```
 rspec spec
 
-rackup
 ```
 
 To populate the database with 500 fake businesses and 10 fake users, run rake db:seed!
