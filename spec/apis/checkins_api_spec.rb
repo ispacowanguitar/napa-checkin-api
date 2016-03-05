@@ -25,6 +25,14 @@ describe CheckinsApi do
 
       expect(checkin2.valid?).to eq(false)
     end
+
+    it 'will allow two identical checkins MORE than an hour apart' do
+      checkin1 = FactoryGirl.create(:checkin, created_at: Time.now)
+      checkin2 = FactoryGirl.build(:checkin, created_at: (Time.now + 70.minutes))
+      checkin2.valid?
+
+      expect(checkin2.valid?).to eq(true)
+    end
   end
 
 end
