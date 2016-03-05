@@ -3,12 +3,12 @@ class Checkin < ActiveRecord::Base
   belongs_to :business
 
   validates :user_id, :business_id, presence: true
-  validate :already_checked_in? 
+  validate :user_cannot_check_in_twice 
 
-  def already_checked_in?
+  def user_cannot_check_in_twice
     last_similar_checkin = Checkin.where(user_id: user_id, business_id: business_id).last
     if last_similar_checkin && last_similar_checkin.created_at + 1.hour >= created_at
-      errors.add(:created_at, "can't be in the past")
+      errors.add(:created_at, "can't sign in twice at the same location")
     end
   end
 
