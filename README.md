@@ -30,7 +30,7 @@ You can also perform basic CRUD operations via POST and PATCH requests. However,
 
 For a list of all Checkins in the database, go to '/checkins'. To retrieve a checkin with id = 1, go to '/checkins/1'.
 
-You can create a checkin with a POST request. Just give it the parameters of the user_id, and the business_id. Both of these parameters must be present for the checkin to save properly. 
+You can create a checkin with a POST request. Just give it the parameters of the user_id, and the business_id. Both of these parameters must be present for the checkin to save properly. If the user tries to check in to the same location after already checking in there less than an hour earlier, the checkin will NOT be saved, and an error message will be sent. 
 
 ### Development
 After cloning the repository, bundle to make sure you have all needed gems installed by opening your terminal and running
