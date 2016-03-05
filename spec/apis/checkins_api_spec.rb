@@ -19,4 +19,13 @@ describe CheckinsApi do
     end
   end
 
+  describe 'POST /checkins' do
+    it 'will not allow two identical checkins less than an hour apart' do
+      checkin1 = FactoryGirl.create(:checkin)
+      checkin2 = FactoryGirl.create(:checkin)
+
+      expect(checkin2.valid?).to eq(false)
+    end
+  end
+
 end

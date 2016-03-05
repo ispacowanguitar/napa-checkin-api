@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :checkin do
-    user_id 1
-    business_id 1
+    user_id 8
+    business_id 8
+    created_at Time.now
   end
 end

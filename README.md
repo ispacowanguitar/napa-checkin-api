@@ -10,7 +10,7 @@ Welcome to the Checkin API!
 
 ### Overview
 
-This is an API which allows a user to find a business and check in to it! The API will save each checkin in the database, so that statistics on each business and each user is easily produced. 
+This is an API which allows a user to find a business and check in to it! The API will save each checkin in the database, so that statistics on each business and each user are easily produced. 
 
 ### How Does It Work
 

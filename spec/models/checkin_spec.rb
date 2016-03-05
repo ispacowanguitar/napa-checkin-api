@@ -16,4 +16,5 @@ describe Checkin do
     checkin = FactoryGirl.build(:checkin, business_id: nil)
     expect(checkin).to_not be_valid
   end
+
 end
