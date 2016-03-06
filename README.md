@@ -20,11 +20,11 @@ It is important that a user cannot abuse the system by checking in to a business
 
 ### Endpoints
 
-There are two endpoints. 
+There are two basic endpoints. 
 
 1.businesses
 
-For a list of all businesses in the database, go to '/businesses'. To retrieve a business with id = 1, go to '/businesses/1' 
+For a list of all businesses in the database, go to '/businesses'. To sort this list by some attribute, you can pass in a url parameter sort_by=attribute, or sort_by_desc for descending order.  To retrieve a business with id = 1, go to '/businesses/1' 
 
 You can also perform basic CRUD operations via POST and PATCH requests. However, only businesses with a name, phone_number, and address present will be saved into the database. 
 
