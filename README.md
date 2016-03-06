@@ -16,6 +16,8 @@ This is an API which allows a user to find a business and check in to it! The AP
 
 The database consists of three models. It can store users, businesses, and checkins. The checkin table has two main columns which are inputed by the client each time the user checks in: user_id, and business_id. This way, each checkin can be stored, and can be ordered by the created_at date that active record so kindly provides us with.  
 
+It is important that a user cannot abuse the system by checking in to a business multiple times in a short period, so a validation on the database will not allow another checkin at the same location within an hour of the first one. This time limit can be shortened or lengthened in the 'already_checked_in?' method found in checkin model ('/app/apis/models/checkin.rb')
+
 ### Endpoints
 
 There are two endpoints. 
@@ -50,12 +52,17 @@ rspec spec
 
 To populate the database with 500 fake businesses and 10 fake users, run rake db:seed
 
-For the purposes of testing the time limitation on checkin, time-warp gem has been installed. This alters 'Time.now' while creating checkin instances to test validations. 
 
 ### Extra Links
 
-Fake data is generated with the gem 'faker'
-
-Documentation for this gem can be found at
+Fake data is generated with the gem 'faker'. Documentation for this gem can be found at
 
 - [Link to documentation](https://github.com/stympy/faker)
+
+For testing purposes, more information on the 'time-warp' gem
+
+- [Link to documentation](https://github.com/harvesthq/time-warp)
+
+
+
+
