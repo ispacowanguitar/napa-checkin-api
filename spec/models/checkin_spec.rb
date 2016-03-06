@@ -17,20 +17,29 @@ describe Checkin do
     expect(checkin).to_not be_valid
   end
 
-  it 'will not allow two identical checkins less than an hour apart' do
-      checkin1 = FactoryGirl.create(:checkin, created_at: Time.now)
-      checkin2 = FactoryGirl.build(:checkin, created_at: (Time.now + 30.minutes))
-      checkin2.valid?
+  it 'will not allow two identical checkins LESS than an hour apart' do
+      pretend_now_is(Time.now) do
+        checkin1 = FactoryGirl.create(:checkin)
+      end
 
-      expect(checkin2.valid?).to eq(false)
+      pretend_now_is(Time.now + 59.minutes) do
+        checkin2 = FactoryGirl.build(:checkin)
+        checkin2.valid?
+        expect(checkin2.valid?).to eq(false)
+      end
     end
 
     it 'will allow two identical checkins MORE than an hour apart' do
-      checkin1 = FactoryGirl.create(:checkin, created_at: Time.now)
-      checkin2 = FactoryGirl.build(:checkin, created_at: (Time.now + 70.minutes))
-      checkin2.valid?
 
-      expect(checkin2.valid?).to eq(true)
+      pretend_now_is(Time.now) do
+        checkin1 = FactoryGirl.create(:checkin)
+      end
+
+      pretend_now_is(Time.now + 61.minutes) do
+        checkin2 = FactoryGirl.build(:checkin)
+        checkin2.valid?
+        expect(checkin2.valid?).to eq(true)
+      end
     end
 
 end
