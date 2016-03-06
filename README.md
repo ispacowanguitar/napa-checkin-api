@@ -55,13 +55,10 @@ To populate the database with 500 fake businesses and 10 fake users, run rake db
 
 ### Extra Links
 
-Fake data is generated with the gem 'faker'. Documentation for this gem can be found at
+- [Documentation for faker gem](https://github.com/stympy/faker)
 
-- [Link to documentation](https://github.com/stympy/faker)
 
-For testing purposes, more information on the 'time-warp' gem
-
-- [Link to documentation](https://github.com/harvesthq/time-warp)
+- [Documentation for time-warp gem](https://github.com/harvesthq/time-warp)
 
 
 

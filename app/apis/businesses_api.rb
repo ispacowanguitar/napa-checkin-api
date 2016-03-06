@@ -1,5 +1,17 @@
 class BusinessesApi < Grape::API
 
+  desc 'sort businesses' 
+  params do
+    optional :sort_by, type: String, desc: 'Attribute to sort by. '
+    optional :sort_by_desc, type: String, desc: 'Attribute to sort by desceding. '
+  end
+  get do
+    app = Object.new
+    app.extend(Napa::SortableApi)
+    businesses = app.sort_from_params(Business.all, "#{params[:sort_by]},-#{params[:sort_by_desc]}")
+    represent businesses, with: BusinessRepresenter
+  end
+
   desc 'Get a list of businesses'
   params do
     optional :ids, type: Array, desc: 'Array of business ids'
