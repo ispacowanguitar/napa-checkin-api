@@ -48,7 +48,9 @@ rspec spec
 
 ```
 
-To populate the database with 500 fake businesses and 10 fake users, run rake db:seed!
+To populate the database with 500 fake businesses and 10 fake users, run rake db:seed
+
+For the purposes of testing the time limitation on checkin, time-warp gem has been installed. This alters 'Time.now' while creating checkin instances to test validations. 
 
 ### Extra Links
 

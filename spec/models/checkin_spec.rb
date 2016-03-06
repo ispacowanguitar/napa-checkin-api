@@ -18,9 +18,7 @@ describe Checkin do
   end
 
   it 'will not allow two identical checkins LESS than an hour apart' do
-      pretend_now_is(Time.now) do
-        checkin1 = FactoryGirl.create(:checkin)
-      end
+      checkin1 = FactoryGirl.create(:checkin)
 
       pretend_now_is(Time.now + 59.minutes) do
         checkin2 = FactoryGirl.build(:checkin)
@@ -30,10 +28,7 @@ describe Checkin do
     end
 
     it 'will allow two identical checkins MORE than an hour apart' do
-
-      pretend_now_is(Time.now) do
-        checkin1 = FactoryGirl.create(:checkin)
-      end
+      checkin1 = FactoryGirl.create(:checkin)
 
       pretend_now_is(Time.now + 61.minutes) do
         checkin2 = FactoryGirl.build(:checkin)
