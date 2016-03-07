@@ -13,10 +13,10 @@ describe BusinessesApi do
       business = FactoryGirl.create(:business)
 
       get "/businesses/#{business.id}"
-      json = JSON.parse(last_response.body)
+      business_name = JSON.parse(last_response.body)['data']['name']
     
       expect(last_response.status).to be(200)
-      expect(json['data']['name']).to eq('Company_name')
+      expect(business_name).to eq('Company_name')
     end
   end
 
@@ -25,9 +25,19 @@ describe BusinessesApi do
       business = FactoryGirl.build(:business)
 
       post "/businesses/?name=#{business.name}&phone_number=#{business.phone_number}&address=#{business.address}"
-      json = JSON.parse(last_response.body)
+      newly_created_name = JSON.parse(last_response.body)['data']['name']
 
-      expect(json['data']['name']).to eq('Company_name')
+      expect(newly_created_name).to eq('Company_name')
+    end
+  end
+
+  describe 'PUT /businesses' do
+    it 'updates a business' do
+      business = FactoryGirl.create(:business, name: "Wrong name")
+
+      put "/businesses/#{business.id}/?name=Correct Name"
+      updated_name = JSON.parse(last_response.body)['data']['name']
+      expect(updated_name).to eq('Correct Name')
     end
   end
 
