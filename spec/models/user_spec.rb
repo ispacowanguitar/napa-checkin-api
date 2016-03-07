@@ -7,7 +7,7 @@ describe User do
     expect(user).to_not be_nil
   end
 
-  context 'failed create request' do
+  context 'invalid create request' do
     it 'cannot be created without a name' do
       expect(FactoryGirl.build(:user, name: nil)).to_not be_valid
     end
