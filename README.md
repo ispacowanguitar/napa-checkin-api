@@ -49,7 +49,7 @@ To make sure everything is running properly run the tests with
 rspec spec
 ```
 
-To populate the database with 500 fake businesses and 10 fake users, run 
+To populate the database with 50 fake businesses and 100 fake users, run 
 ```
 rake db:seed
 ```

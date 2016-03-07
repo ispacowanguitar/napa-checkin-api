@@ -1,4 +1,4 @@
-500.times do
+50.times do
   name = Faker::Company.name
   phone_number = Faker::PhoneNumber.cell_phone
   address = Faker::Address.street_address
@@ -9,7 +9,7 @@
     )
 end
 
-10.times do
+100.times do
   name = Faker::Internet.user_name
   email = Faker::Internet.email
   User.create(
