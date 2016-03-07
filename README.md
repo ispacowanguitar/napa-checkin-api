@@ -26,13 +26,13 @@ There are two basic endpoints.
 
 For a list of all businesses in the database, go to '/businesses'. To sort this list by some attribute, you can pass in a url parameter sort_by=attribute, or sort_by_desc for descending order.  To retrieve a business with id = 1, go to '/businesses/1' 
 
-You can also perform basic CRUD operations via POST and PATCH requests. However, only businesses with a name, phone_number, and address present will be saved into the database. 
+You can create and update (but not delete) via POST and PATCH requests. However, only businesses with a name, phone_number, and address present will be saved into the database. 
 
 2 - Checkins
 
 For a list of all Checkins in the database, go to '/checkins'. To retrieve a checkin with id = 1, go to '/checkins/1'.
 
-You can create a checkin with a POST request. Just give it the parameters of the user_id, and the business_id. Both of these parameters must be present for the checkin to save properly. If the user tries to check in to the same location after already checking in there less than an hour earlier, the checkin will NOT be saved, and an error message will be sent. Unlike businesses, it is not possible for client to edit a checkin once it has been saved. 
+You can create a checkin (but NOT update or delete) with a POST request. Just give it the parameters of the user_id, and the business_id. Both of these parameters must be both present and integers for the checkin to save properly. If the user tries to check in to the same location after already checking in there less than an hour earlier, the checkin will NOT be saved, and an error message will be sent. 
 
 ### Development
 After cloning the repository, bundle to make sure you have all needed gems installed by opening your terminal and running
@@ -47,11 +47,12 @@ rake db:reset
 To make sure everything is running properly run the tests with
 ```
 rspec spec
-
 ```
 
-To populate the database with 500 fake businesses and 10 fake users, run rake db:seed
-
+To populate the database with 500 fake businesses and 10 fake users, run 
+```
+rake db:seed
+```
 
 ### Extra Links
 
