@@ -11,7 +11,6 @@ describe CheckinsApi do
     it 'returns an individual checkin' do
       checkin = FactoryGirl.create(:checkin)
       get "/checkins/#{checkin.id}"
-      json = JSON.parse(last_response.body)
     
       expect(last_response.status).to eq(200)
     end
