@@ -55,10 +55,10 @@ rake db:seed
 ```
 
 ### Extra Links
-
+The faker gem was used to populate the database with fake data. 
 - [Documentation for faker gem](https://github.com/stympy/faker)
 
-
+Because it is not possible to simply specify a custom created_at time before an object is saved in activerecord, the time-warp gem was used for the purposes of momentarily altering the ruby Time object. 
 - [Documentation for time-warp gem](https://github.com/harvesthq/time-warp)
 
 
