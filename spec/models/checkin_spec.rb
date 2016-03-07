@@ -7,34 +7,35 @@ describe Checkin do
     expect(checkin).to_not be_nil
   end
 
-  it 'cannot be created without a valid user_id' do
-    checkin = FactoryGirl.build(:checkin, user_id: nil)
-    expect(checkin).to_not be_valid
+  context 'failed create request' do
+    it 'cannot be created without a valid user_id' do
+      checkin = FactoryGirl.build(:checkin, user_id: nil)
+      expect(checkin).to_not be_valid
+    end
+
+    it 'cannot be created without a valid business_id' do
+      checkin = FactoryGirl.build(:checkin, business_id: nil)
+      expect(checkin).to_not be_valid
+    end
   end
 
-  it 'cannot be created without a valid business_id' do
-    checkin = FactoryGirl.build(:checkin, business_id: nil)
-    expect(checkin).to_not be_valid
-  end
-
-  it 'will not allow two identical checkins LESS than an hour apart' do
+  context 'when checks in twice' do
+    it 'will not allow two identical checkins LESS than an hour apart' do
       checkin1 = FactoryGirl.create(:checkin)
 
-      pretend_now_is(Time.now + 59.minutes) do
+      pretend_now_is(Time.now + 55.minutes) do
         checkin2 = FactoryGirl.build(:checkin)
-        checkin2.valid?
         expect(checkin2.valid?).to eq(false)
       end
     end
 
-  it 'will allow two identical checkins MORE than an hour apart' do
-    checkin1 = FactoryGirl.create(:checkin)
+    it 'will allow two identical checkins MORE than an hour apart' do
+      checkin1 = FactoryGirl.create(:checkin)
 
-    pretend_now_is(Time.now + 61.minutes) do
-      checkin2 = FactoryGirl.build(:checkin)
-      checkin2.valid?
-      expect(checkin2.valid?).to eq(true)
+      pretend_now_is(Time.now + 65.minutes) do
+        checkin2 = FactoryGirl.build(:checkin)
+        expect(checkin2.valid?).to eq(true)
+      end
     end
   end
-
 end
