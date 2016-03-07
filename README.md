@@ -22,13 +22,13 @@ It is important that a user cannot abuse the system by checking in to a business
 
 There are two basic endpoints. 
 
-1.businesses
+1 - businesses
 
 For a list of all businesses in the database, go to '/businesses'. To sort this list by some attribute, you can pass in a url parameter sort_by=attribute, or sort_by_desc for descending order.  To retrieve a business with id = 1, go to '/businesses/1' 
 
 You can also perform basic CRUD operations via POST and PATCH requests. However, only businesses with a name, phone_number, and address present will be saved into the database. 
 
-2. Checkins
+2 - Checkins
 
 For a list of all Checkins in the database, go to '/checkins'. To retrieve a checkin with id = 1, go to '/checkins/1'.
 
