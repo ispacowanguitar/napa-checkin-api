@@ -27,14 +27,14 @@ describe Checkin do
       end
     end
 
-    it 'will allow two identical checkins MORE than an hour apart' do
-      checkin1 = FactoryGirl.create(:checkin)
+  it 'will allow two identical checkins MORE than an hour apart' do
+    checkin1 = FactoryGirl.create(:checkin)
 
-      pretend_now_is(Time.now + 61.minutes) do
-        checkin2 = FactoryGirl.build(:checkin)
-        checkin2.valid?
-        expect(checkin2.valid?).to eq(true)
-      end
+    pretend_now_is(Time.now + 61.minutes) do
+      checkin2 = FactoryGirl.build(:checkin)
+      checkin2.valid?
+      expect(checkin2.valid?).to eq(true)
     end
+  end
 
 end
