@@ -21,6 +21,22 @@ describe CheckinsApi do
       post "/checkins/?user_id=1&business_id=1"
       expect(last_response.status).to eq(201)
     end
+
+    context 'with invalid create' do
+      it 'will not create without business_id' do
+        post "/checkins/?user_id=1"
+
+        expect(last_response.status).to eq(422)
+        expect(last_response.body).to include("can't be blank")
+      end
+
+      it 'will not create if attribute is not integer' do
+        post "/checkins/?user_id=1&business_id=a"
+
+        expect(last_response.status).to eq(400)
+        expect(last_response.body).to include("business_id is invalid")
+      end
+    end
   end
 
 end
